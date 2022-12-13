@@ -6,7 +6,7 @@ import com.example.spring.model.EventI;
 import com.example.spring.model.TicketI;
 import com.example.spring.model.UserI;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -25,21 +25,18 @@ public interface BookingFacade {
      * Get list of events by matching title. Title is matched using 'contains' approach.
      * In case nothing was found, empty list is returned.
      * @param title Event title or it's part.
-     * @param pageSize Pagination param. Number of events to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of events.
      */
-    List<EventI> getEventsByTitle(String title, int pageSize, int pageNum);
+    List<Event> getEventsByTitle(String title);
 
     /**
      * Get list of events for specified day.
      * In case nothing was found, empty list is returned.
      * @param day Date object from which day information is extracted.
-     * @param pageSize Pagination param. Number of events to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of events.
      */
-    List<EventI> getEventsForDay(Date day, int pageSize, int pageNum);
+
+    List<Event> getEventsForDay(Date day);
 
     /**
      * Creates new event. Event id should be auto-generated.

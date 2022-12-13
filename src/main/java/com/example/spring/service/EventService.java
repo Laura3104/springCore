@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -26,15 +26,13 @@ public class EventService {
         return eventRepository.findById(eventId).orElseThrow(NonExistentEventException::new);
     }
 
-/*    public List<EventDAO> getEventsByTitle(String title, int pageSize, int pageNum) {
-        eventRepository.findBy();
-        return ;
+    public List<EventDAO> getEventsByTitle(String title) {
+        return eventRepository.findEventsByTitle(title);
     }
 
-
-    public List<EventDAO> getEventsForDay(Date day, int pageSize, int pageNum) {
-        return ;
-    }*/
+    public List<EventDAO> getEventsForDay(Date day) {
+        return eventRepository.findEventsByDate(day);
+    }
 
     public EventDAO createEvent(Event event) {
 

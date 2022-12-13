@@ -13,8 +13,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -35,13 +36,19 @@ public class BookingService implements BookingFacade {
     }
 
     @Override
-    public List<EventI> getEventsByTitle(String title, int pageSize, int pageNum) {
-        return null;
+    public List<Event> getEventsByTitle(String title) {
+        return eventService.getEventsByTitle(title)
+                            .stream()
+                            .map(eventDAO -> mapper.map(eventDAO, Event.class))
+                            .collect(Collectors.toList());
     }
 
     @Override
-    public List<EventI> getEventsForDay(Date day, int pageSize, int pageNum) {
-        return null;
+    public List<Event> getEventsForDay(Date day) {
+        return eventService.getEventsForDay(day)
+                            .stream()
+                            .map(eventDAO -> mapper.map(eventDAO, Event.class))
+                            .collect(Collectors.toList());
     }
 
     @Override
