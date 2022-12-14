@@ -75,11 +75,9 @@ public interface BookingFacade {
      * Get list of users by matching name. Name is matched using 'contains' approach.
      * In case nothing was found, empty list is returned.
      * @param name Users name or it's part.
-     * @param pageSize Pagination param. Number of users to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of users.
      */
-    List<User> getUsersByName(String name, int pageSize, int pageNum);
+    List<User> getUsersByName(String name);
 
     /**
      * Creates new user. User id should be auto-generated.

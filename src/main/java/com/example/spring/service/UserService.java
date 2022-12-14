@@ -3,7 +3,6 @@ package com.example.spring.service;
 import com.example.spring.dao.UserDAO;
 import com.example.spring.exception.NonExistentUserException;
 import com.example.spring.model.DTO.User;
-import com.example.spring.model.UserI;
 import com.example.spring.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +18,17 @@ public class UserService {
     UserRepository userRepository;
 
     public UserDAO getUserById(long userId) {
-        log.info("Getting User");
         return userRepository.findById(userId).orElseThrow(NonExistentUserException::new);
     }
 
 
-    public UserI getUserByEmail(String email) {
-        return null;
+    public UserDAO getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
     }
 
 
-    public List<UserI> getUsersByName(String name, int pageSize, int pageNum) {
-        return null;
+    public List<UserDAO> getUsersByName(String name) {
+        return userRepository.findUsersByName(name);
     }
 
 

@@ -79,12 +79,16 @@ public class BookingService implements BookingFacade {
 
     @Override
     public User getUserByEmail(String email) {
-        return null;
+        UserDAO userDAO =  userService.getUserByEmail(email);
+        return mapper.map(userDAO, User.class);
     }
 
     @Override
-    public List<User> getUsersByName(String name, int pageSize, int pageNum) {
-        return null;
+    public List<User> getUsersByName(String name) {
+        return userService.getUsersByName(name)
+                          .stream()
+                          .map(userDAO -> mapper.map(userDAO, User.class))
+                          .collect(Collectors.toList());
     }
 
     @Override

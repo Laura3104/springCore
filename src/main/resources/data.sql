@@ -4,6 +4,7 @@ INSERT INTO users (name, email) VALUES
 
 INSERT INTO events (title, date) VALUES
   ('event1', '2020-10-01'),
+  ('event1', '2020-10-01'),
   ('event2', '2020-10-01');
 
 INSERT INTO tickets (category, place, user_id, event_id) VALUES
