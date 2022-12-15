@@ -2,7 +2,7 @@ package com.example.spring.service;
 
 import com.example.spring.dao.EventDAO;
 import com.example.spring.exception.NonExistentEventException;
-import com.example.spring.model.DTO.Event;
+import com.example.spring.model.dto.Event;
 import com.example.spring.repository.EventRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

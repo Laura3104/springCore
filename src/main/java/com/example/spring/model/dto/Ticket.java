@@ -1,20 +1,22 @@
-package com.example.spring.model.DTO;
+package com.example.spring.model.dto;
 
+import com.example.spring.model.EventI;
+import com.example.spring.model.UserI;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Event {
+public class Ticket {
     private Long id;
-    private String title;
-    private Date date;
+    private UserI user;
+    private EventI event;
+    private String category;
+    private String place;
 }

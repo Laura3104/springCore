@@ -1,7 +1,7 @@
 package com.example.spring.facade;
 
-import com.example.spring.model.DTO.Event;
-import com.example.spring.model.DTO.User;
+import com.example.spring.model.dto.Event;
+import com.example.spring.model.dto.User;
 import com.example.spring.model.EventI;
 import com.example.spring.model.TicketI;
 import com.example.spring.model.UserI;

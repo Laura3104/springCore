@@ -1,4 +1,4 @@
-package com.example.spring.model.DTO;
+package com.example.spring.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

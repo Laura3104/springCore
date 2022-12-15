@@ -2,7 +2,7 @@ package com.example.spring.service;
 
 import com.example.spring.dao.UserDAO;
 import com.example.spring.exception.NonExistentUserException;
-import com.example.spring.model.DTO.User;
+import com.example.spring.model.dto.User;
 import com.example.spring.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

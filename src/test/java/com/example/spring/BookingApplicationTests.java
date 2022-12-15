@@ -2,9 +2,9 @@ package com.example.spring;
 
 import com.example.spring.exception.NonExistentEventException;
 import com.example.spring.exception.NonExistentUserException;
-import com.example.spring.model.DTO.User;
+import com.example.spring.model.dto.User;
 import com.example.spring.service.BookingService;
-import com.example.spring.model.DTO.Event;
+import com.example.spring.model.dto.Event;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
