@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Ticket {
     private Long id;
-    private UserI user;
-    private EventI event;
-    private String category;
-    private String place;
+    private User user;
+    private Event event;
+    private Category category;
+    private int place;
 }

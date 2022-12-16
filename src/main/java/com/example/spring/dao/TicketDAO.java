@@ -31,13 +31,13 @@ public class TicketDAO {
     private String category;
 
     @Column(name = "place")
-    private String place;
+    private int place;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserDAO userId;
+    private UserDAO user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", nullable = false)
-    private EventDAO eventId;
+    private EventDAO event;
 }

@@ -1,13 +1,13 @@
 package com.example.spring.service;
 
 import com.example.spring.dao.EventDAO;
+import com.example.spring.dao.TicketDAO;
 import com.example.spring.dao.UserDAO;
 import com.example.spring.facade.BookingFacade;
+import com.example.spring.model.dto.Category;
 import com.example.spring.model.dto.Event;
+import com.example.spring.model.dto.Ticket;
 import com.example.spring.model.dto.User;
-import com.example.spring.model.EventI;
-import com.example.spring.model.TicketI;
-import com.example.spring.model.UserI;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,9 @@ public class BookingService implements BookingFacade {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    TicketService ticketService;
 
     private static final ModelMapper mapper = new ModelMapper();
 
@@ -112,22 +115,29 @@ public class BookingService implements BookingFacade {
     }
 
     @Override
-    public TicketI bookTicket(long userId, long eventId, int place, TicketI.Category category) {
-        return null;
+    public Ticket bookTicket(long userId, long eventId, int place, Category category) {
+        TicketDAO ticketToSave = ticketService.bookTicket(userId, eventId, place, category);
+        return mapper.map(ticketToSave, Ticket.class);
     }
 
     @Override
-    public List<TicketI> getBookedTickets(UserI user, int pageSize, int pageNum) {
-        return null;
+    public List<Ticket> getBookedTickets(User user) {
+        return ticketService.getBookedTickets(mapper.map(user, UserDAO.class))
+                            .stream()
+                            .map(ticketDAO -> mapper.map(ticketDAO, Ticket.class))
+                            .collect(Collectors.toList());
     }
 
     @Override
-    public List<TicketI> getBookedTickets(EventI event, int pageSize, int pageNum) {
-        return null;
+    public List<Ticket> getBookedTickets(Event event) {
+        return ticketService.getBookedTickets(mapper.map(event, EventDAO.class))
+                .stream()
+                .map(ticketDAO -> mapper.map(ticketDAO, Ticket.class))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public boolean cancelTicket(long ticketId) {
-        return false;
+    public void cancelTicket(long ticketId) {
+        ticketService.cancelTicket(ticketId);
     }
 }

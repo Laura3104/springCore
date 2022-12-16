@@ -2,6 +2,8 @@ package com.example.spring;
 
 import com.example.spring.exception.NonExistentEventException;
 import com.example.spring.exception.NonExistentUserException;
+import com.example.spring.model.dto.Category;
+import com.example.spring.model.dto.Ticket;
 import com.example.spring.model.dto.User;
 import com.example.spring.service.BookingService;
 import com.example.spring.model.dto.Event;
@@ -12,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Date;
 import java.util.List;
+
+import static com.example.spring.model.dto.Category.CONFERENCES;
 
 
 @SpringBootTest
@@ -124,6 +128,27 @@ class BookingApplicationTests {
 	void deleteNonExistingUserTest() {
 		Long userId = 10L;
 		Assertions.assertThrows(NonExistentUserException.class , ()-> bookingService.deleteUser(userId));
+	}
+
+	@Test
+	void bookTicketTest(){
+		User userToBook = User.builder()
+				.id(1L)
+				.name("Laura")
+				.email("laura@epam.com")
+				.build();
+
+		Event eventToBook = Event.builder()
+				.id(1L)
+				.title("New Event")
+				.date(Date.valueOf("2020-12-12"))
+				.build();
+
+		int place = 1;
+
+		Ticket ticketBooked =  bookingService.bookTicket(userToBook.getId(), eventToBook.getId(), place, CONFERENCES);
+
+		Assertions.assertEquals(CONFERENCES, ticketBooked.getCategory());
 	}
 }
 

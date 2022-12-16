@@ -1,10 +1,9 @@
 package com.example.spring.facade;
 
+import com.example.spring.model.dto.Category;
 import com.example.spring.model.dto.Event;
+import com.example.spring.model.dto.Ticket;
 import com.example.spring.model.dto.User;
-import com.example.spring.model.EventI;
-import com.example.spring.model.TicketI;
-import com.example.spring.model.UserI;
 
 import java.sql.Date;
 import java.util.List;
@@ -109,31 +108,27 @@ public interface BookingFacade {
      * @return Booked ticket object.
      * @throws IllegalStateException if this place has already been booked.
      */
-    TicketI bookTicket(long userId, long eventId, int place, TicketI.Category category);
+    Ticket bookTicket(long userId, long eventId, int place, Category category);
 
     /**
      * Get all booked tickets for specified user. Tickets should be sorted by event date in descending order.
      * @param user User
-     * @param pageSize Pagination param. Number of tickets to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of Ticket objects.
      */
-    List<TicketI> getBookedTickets(UserI user, int pageSize, int pageNum);
+    List<Ticket> getBookedTickets(User user);
 
     /**
      * Get all booked tickets for specified event. Tickets should be sorted in by user email in ascending order.
      * @param event Event
-     * @param pageSize Pagination param. Number of tickets to return on a page.
-     * @param pageNum Pagination param. Number of the page to return. Starts from 1.
      * @return List of Ticket objects.
      */
-    List<TicketI> getBookedTickets(EventI event, int pageSize, int pageNum);
+    List<Ticket> getBookedTickets(Event event);
 
     /**
      * Cancel ticket with a specified id.
      * @param ticketId Ticket id.
      * @return Flag whether anything has been canceled.
      */
-    boolean cancelTicket(long ticketId);
+    void cancelTicket(long ticketId);
 
 }
