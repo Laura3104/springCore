@@ -124,7 +124,7 @@ public class BookingService implements BookingFacade {
     public List<Ticket> getBookedTickets(User user) {
         return ticketService.getBookedTickets(mapper.map(user, UserDAO.class))
                             .stream()
-                            .map(ticketDAO -> mapper.map(ticketDAO, Ticket.class))
+                            .map(ticket -> mapper.map(ticket, Ticket.class))
                             .collect(Collectors.toList());
     }
 

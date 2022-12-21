@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<TicketDAO, Long> {
 
-    List<TicketDAO> findTicketByUser(UserDAO userDAO);
+    List<TicketDAO> findTicketByUserId(Long userId);
 
-    List<TicketDAO> findTicketByEvent(EventDAO eventDAO);
+    List<TicketDAO> findTicketByEventId(Long eventId);
 }

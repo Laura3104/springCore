@@ -33,11 +33,11 @@ public class TicketDAO {
     @Column(name = "place")
     private int place;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserDAO user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
     private EventDAO event;
 }

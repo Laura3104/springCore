@@ -149,6 +149,33 @@ class BookingApplicationTests {
 		Ticket ticketBooked =  bookingService.bookTicket(userToBook.getId(), eventToBook.getId(), place, CONFERENCES);
 
 		Assertions.assertEquals(CONFERENCES, ticketBooked.getCategory());
+		Assertions.assertEquals(1, ticketBooked.getPlace());
+	}
+
+	@Test
+	void getBookedTicketsByUserTest(){
+		User user = User.builder()
+				.id(1L)
+				.name("Laura")
+				.email("laura@epam.com")
+				.build();
+
+		List<Ticket> ticketList = bookingService.getBookedTickets(user);
+		Assertions.assertEquals(1, ticketList.size());
+
+	}
+
+	@Test
+	void getBookedTicketsByEventTest(){
+		Event event = Event.builder()
+				.id(1L)
+				.title("New Event")
+				.date(Date.valueOf("2020-12-12"))
+				.build();
+
+		List<Ticket> ticketList = bookingService.getBookedTickets(event);
+		Assertions.assertEquals(1, ticketList.size());
+
 	}
 }
 

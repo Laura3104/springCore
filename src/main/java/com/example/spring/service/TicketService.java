@@ -7,6 +7,7 @@ import com.example.spring.model.dto.Category;
 import com.example.spring.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,12 +37,13 @@ public class TicketService {
         return ticketRepository.save(ticketDAO);
     }
 
+    @Transactional
     public List<TicketDAO> getBookedTickets(UserDAO user) {
-        return ticketRepository.findTicketByUser(user);
+        return ticketRepository.findTicketByUserId(user.getId());
     }
 
     public List<TicketDAO> getBookedTickets(EventDAO event) {
-        return ticketRepository.findTicketByEvent(event);
+        return ticketRepository.findTicketByEventId(event.getId());
     }
 
     public void cancelTicket(long ticketId) {
