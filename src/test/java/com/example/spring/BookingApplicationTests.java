@@ -152,4 +152,21 @@ class BookingApplicationTests {
     List<Ticket> ticketList = bookingService.getBookedTickets(event);
     Assertions.assertEquals(2, ticketList.size());
   }
+
+  @Test
+  void deleteUserTest() {
+    Long userId = 3L;
+    Assertions.assertDoesNotThrow(() -> bookingService.deleteUser(userId));
+  }
+
+  @Test
+  void deleteEventTest() {
+    Long eventId = 3L;
+    Assertions.assertDoesNotThrow(() -> bookingService.deleteEvent(eventId));
+  }
+  @Test
+  void cancelTicketTest() {
+    Long ticketId = 2L;
+    Assertions.assertDoesNotThrow(() -> bookingService.cancelTicket(ticketId));
+  }
 }
