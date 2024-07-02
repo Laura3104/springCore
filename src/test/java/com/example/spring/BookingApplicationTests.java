@@ -164,6 +164,7 @@ class BookingApplicationTests {
     Long eventId = 3L;
     Assertions.assertDoesNotThrow(() -> bookingService.deleteEvent(eventId));
   }
+
   @Test
   void cancelTicketTest() {
     Long ticketId = 2L;
